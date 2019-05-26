@@ -7,22 +7,18 @@ var getTodayString = () => {
   var year = date.getFullYear();
   var month = addZeroPadding(date.getMonth() + 1);
   var day = addZeroPadding(date.getDate());
-  var week = Array(
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  )[date.getDay()];
+  var week = ["日", "月", "火", "水", "木", "金", "土"][date.getDay()];
   var todayString = year + "/" + month + "/" + day;
   document.getElementById("today-date-content").innerHTML =
     todayString + " " + week;
   return todayString;
 };
+
 getTodayString();
 
+setInterval("getTodayString", 1000);
+
+/*
 var getHolidayDatelist = () => {
   var req = new XMLHttpRequest();
   req.open("get", "../static/data/syukujitsu_linux.csv", true);
@@ -146,4 +142,4 @@ var printHolidayDate = str => {
   holidayElement.innerHTML = inner;
 };
 
-setInterval("getTodayString", 1000);
+*/

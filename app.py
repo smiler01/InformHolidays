@@ -3,13 +3,15 @@ import os
 import datetime
 import sqlite3
 from flask import Flask, render_template, request, redirect
+#
+from dateBase import dateBaseProcessing
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    today_datetime = datetime.date.today()
-    return render_template("index.html", today_datetime=today_datetime)
+    chainHolidayList = dateBaseProcessing().getChainHolidays()
+    return render_template("index.html", chainHolidayList=chainHolidayList)
 
 if __name__ == "__main__":
     app.debug = True
