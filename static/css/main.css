@@ -10,12 +10,17 @@ PC First
 /* common */
 /* 1280px~: desctop pc
 ------------------------------------*/
-html { font-size: 62.5%; }
+html {
+  font-size: 62.5%;
+}
 
 body {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
-  font-size: 1.6rem;
+  font-size: 1.6em;
   background-color: #fff;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 10rem;
 }
 
 p { margin: 0; }
@@ -24,23 +29,38 @@ header { }
 
 .header-nav {
   width: 100%;
-  height: 50px;
-  display: flex;
+  height: 5rem;
   background-color: #fff;
-  box-shadow: 0px 1px 20px 1px #eee;
+  box-shadow: 0 0.1rem 2rem 0.1rem #eee;
+  display: flex;
   flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
 }
 
 .header-title {
+  width: 80rem;
+  height: auto;
   text-decoration: none;
-  font-size: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0 auto;
+}
+
+.header-title-icon {
+  width: 3.0rem;
+  height: 3.0rem;
+  color: black;
+}
+
+.header-title-text {
   color: #000;
+  font-size: 1.6rem;
+  margin: 0.3rem 0 0 0.5rem;
 }
 
 main {
-  width: 1000px;
+  width: 100%;
   height: 100%;
   margin: auto;
   display: flex;
@@ -48,60 +68,134 @@ main {
   align-items: center;
 }
 
-.card {
-  background-color: #fff;
-  box-shadow: 0px 1px 20px 1px #eee;
-  border-radius: 0.2rem 0.2rem 0.2rem 0.2rem / 0.2rem 0.2rem 0.2rem 0.2rem;
-  padding: 5px;
-  margin: 5px;
-}
-
 .today-date {
-  width: 100%;
-  margin: 3.0rem;
+  width: 80rem;
+  height: 12rem;
+  border-radius: 0.6rem 0.6rem 0.6rem 0.6rem / 0.6rem 0.6rem 0.6rem 0.6rem;
+  box-shadow: 0 0.1rem 2rem 0.1rem #eee;
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 3.0rem;
 }
 
-.today-date::after {
-  content: "";
-  width: 600px;
-  height: 0.1rem;
-  background-color: black;
-  border-radius: 0.2rem 0.2rem 0.2rem 0.2rem / 0.2rem 0.2rem 0.2rem 0.2rem;
+.today-date-string, .today-date-name, .today-icon {
+  margin: auto;
 }
 
-.today-is {
+.today-date-string {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+
+.today-date-string p:first-child {
   color: gray;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
-.today-date-content {
-  font-size: 3.0rem;
+.today-date-string p:last-child {
+  font-size: 3rem;
+}
+
+.today-date-name {
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.today-icon {
+  font-size: 4.5rem;
+  margin-left: 1rem;
+}
+
+.holiday-icon {
+  height: 4.5rem;
+  width: auto;
+}
+
+.work-icon {
+  height: 4.5rem;
+  width: auto;
+}
+
+/**/
+.specify-numchain {
+
+}
+
+.specify-numchain-contents {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.specify-numchain-input {
+  display: none;
+}
+
+.specify-numchain-label {
+  background-color: #fff;
+  border: none;
+  border-radius: 1.2rem 1.2rem 1.2rem 1.2rem / 1.2rem 1.2rem 1.2rem 1.2rem;
+  box-shadow: 0 0.1rem 2rem 0.1rem #eee;
+  padding: 0.3rem 1.4rem 0.3rem 1.4rem;
+  margin: 0.4rem;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.specify-numchain-label:hover {
+  background-color: #ddd;
+}
+
+.specify-numchain-input:checked + .specify-numchain-label {
+  background-color: #ddd;
+}
+
+.numchain-button {
+}
+
+.specify-numchain-submit {
+  color: #fff;
+  font-size: 1.4rem;
+  border-radius: 0.4rem 0.4rem 0.4rem 0.4rem / 0.4rem 0.4rem 0.4rem 0.4rem;
+  background-color: #4caf50;
+  border: none;
+  padding: 0.4rem 2.2rem 0.4rem 2.2rem;
+  margin: 0.4rem;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.specify-numchain-submit:hover {
+  background-color: #4b7a4d;
 }
 
 /**/
 .consecutive-holidays-block {
-  width: 600px;
+  width: 80rem;
   height: auto;
   margin: auto;
 }
 
 .consecutive-holidays-content {
-  margin: 0 0 25px 0;
+  margin: 0 0 2.5rem 0;
 }
 
 .firstday-consecutive-holiday {
-  background-color: white;
+  background-color: #fff;
   color: #000;
-  border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
-  box-shadow: 0px 1px 20px 1px #eee;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem / 0.5rem 0.5rem 0.5rem 0.5rem;
+  box-shadow: 0 0.1rem 2rem 0.1rem #eee;
   cursor: pointer;
   display: flex;
   flex-flow: row nowrap;
-  padding: 10px 20px 10px 20px;
-  transition-property: box-shadow;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  transition-property: background-color;
   transition-duration: 0.5s;
 }
 
@@ -109,25 +203,52 @@ main {
   font-family: "Font Awesome 5 Free";
   content: "\f054";
   font-weight: bold;
-  font-size: 14px;
-  padding: 6px 12px 6px 12px;
+  font-size: 1.4rem;
+  padding: 0.6rem 1.2rem 0.6rem 1.2rem;
   transition-property: content;
   transition-duration: 0.5s;
 }
 
 .firstday-consecutive-holiday:hover {
-  box-shadow: 0px 1px 20px 10px #eee;
+  background-color: #ddd;
 }
 
-.holiday-caretdown, .holiday-datestring, .holiday-name, .holiday-dayofweek, .holiday-numchain {
-  margin: 6px 3px 6px 3px;
+.holiday-caretdown, .holiday-datestring, .holiday-name, .holiday-numnextuntill, .holiday-dayofweek, .holiday-numchain, .tweet-button {
+  margin: 0.6rem 0.3rem 0.6rem 0.3rem;
+}
+
+.holiday-numnextuntill {
+  color: #F78D03;
+  margin-left:auto;
+  margin-right: 1rem;
+  justify-self: flex-end;
 }
 
 .holiday-numchain {
-  color: red;
+  color: #4caf50;
   justify-self: flex-end;
-  margin-left: auto;
-  margin-right: 20px;
+  margin-right: 1.5rem;
+}
+
+.tweet-button {
+  width: 2.2rem;
+  height: 2.2rem;
+  text-decoration: none;
+  background-color: #39A6E7;
+  color: #fff;
+  line-height: 2.2rem;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: auto;
+  transition: transform 0.5s;
+}
+
+.fa-twitter {
+  font-size: 1.4rem;
+}
+
+.tweet-button:hover {
+  transform: scale(1.2);
 }
 
 .first-checkbox-label {
@@ -137,20 +258,20 @@ main {
 .child-consecutive-holidays {
   height: 0;
   overflow: hidden;
-  opacity:0;
-}
-
-.first-checkbox-label:checked + .child-consecutive-holidays {
-  height: auto;
-  opacity: 1;
+  opacity: 0;
 }
 
 .first-checkbox-label:checked + .firstday-consecutive-holiday {
-  background-color: gray;
+  background-color: #ddd;
 }
 
 .first-checkbox-label:checked + .firstday-consecutive-holiday:before {
   content: "\f078";
+}
+
+.first-checkbox-label:checked ~ .child-consecutive-holidays {
+  height: auto;
+  opacity: 1;
 }
 
 .child-holiday {
@@ -158,51 +279,195 @@ main {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding: 10px 0px 0px 53px;
+  padding: 1rem 0 0 5.6rem;
 }
 
-footer { }
+footer {
+  width: 100%;
+  padding-top: 5rem;
+  position: absolute;
+  bottom: 0;
+}
 
 .footer-nav {
   width: 100%;
-  height: 40px;
+  height: 4rem;
   background-color: #fff;
-  box-shadow: 0px 1px 20px 1px #eee;
+  box-shadow: 0 0.1rem 2rem 0.1rem #eee;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 0;
 }
 
 .footer-copyright {
-  font-size: 12px;
+  font-size: 1.2rem;
   color: gray;
 }
 
 /* 960px~1279px: laptop pc
 ------------------------------------*/
 @media screen and (min-width: 960px) and (max-width: 1279px) {
+  .header-title {
+    width: 90rem;
+  }
+
+  .today-date {
+    width: 90rem;
+  }
+
+  .consecutive-holidays-block {
+    width: 90rem;
+  }
 
 }
 
 /* 600px~959px: tablet
 ------------------------------------*/
 @media screen and (min-width: 600px) and (max-width: 959px) {
+  .header-title {
+    width: 70rem;
+  }
 
+  .today-date {
+    width: 70rem;
+  }
+
+  .consecutive-holidays-block {
+    width: 70rem;
+  }
 }
 
 /* 480px~599px: mobile phone (sideways)
 ------------------------------------*/
 @media screen and (min-width: 480px) and (max-width: 599px) {
+  .header-title {
+    width: 45rem;
+  }
 
+  /*main*/
+  .today-date {
+    width: 45rem;
+  }
+
+  .today-date-string p:first-child {
+    font-size: 1.2rem;
+  }
+
+  .today-date-string p:last-child {
+    font-size: 2.2rem;
+  }
+
+  .today-date-name {
+    font-size: 4.0rem;
+  }
+
+  .numchain-button {
+    font-size: 1.4rem;
+  }
+
+  .holiday-datestring, .holiday-dayofweek, .holiday-name, .holiday-numnextuntill, .holiday-numchain, .tweet-button {
+    font-size: 1.4rem;
+  }
+
+  .consecutive-holidays-block {
+    width: 45rem;
+  }
 }
 
 /* ~479px: mobile phone (vertically)
 ------------------------------------*/
 @media screen and (max-width: 479px) {
 
+  .header-nav {
+    height: 4.0rem;
+  }
+
+  .header-title {
+    width: 36rem;
+  }
+
+  .header-title-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .header-title-text {
+    font-size: 1.4rem;
+  }
+
+  /*main*/
+  .today-date {
+    width: 36rem;
+  }
+
+  .today-date-string {
+    margin-left: 3.0rem;
+  }
+
+  .today-date-string p:first-child {
+    font-size: 1.0rem;
+  }
+
+  .today-date-string p:last-child {
+    font-size: 2.2rem;
+  }
+
+  .today-date-name {
+    font-size: 3.2rem;
+    margin-right: 0.5rem;
+  }
+
+  .firstday-consecutive-holiday {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+
+  .firstday-consecutive-holiday:before {
+    font-size: 1.0rem;
+  }
+
+  .holiday-icon, .work-icon {
+    height: 3.2rem;
+    width: auto;
+    margin-left: 0.5rem;
+    margin-right: 3.0rem;
+  }
+
+  .specify-numchain-label {
+    margin: 0.2rem;
+  }
+
+  .numchain-button {
+    font-size: 1.0rem;
+  }
+
+  .specify-numchain-submit {
+    font-size: 1.0rem;
+    padding: 0.35rem 2.0rem 0.35rem 2.0rem;
+  }
+
+  .holiday-datestring, .holiday-dayofweek, .holiday-name, .holiday-numnextuntill, .holiday-numchain, .tweet-button {
+    font-size: 1.0rem;
+  }
+
+  .tweet-button {
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 2.2rem;
+    margin-top: 0.2rem;
+  }
+
+  .fa-twitter {
+    font-size: 1.0rem;
+  }
+
+  .consecutive-holidays-block {
+    width: 36rem;
+  }
+
+  .child-holiday {
+    padding-left: 4.3rem;
+  }
 }
 
 

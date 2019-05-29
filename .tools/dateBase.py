@@ -12,7 +12,7 @@ def getPublicHolidayDateData():
     df = pd.read_csv(holidayDatetimeCSVPath)
     timestamps  = [datetime.strptime(ds, "%Y/%m/%d").timestamp() for ds in df.datestring]
     datestrings = [datetime.strptime(ds, "%Y/%m/%d").strftime("%Y/%m/%d") for ds in df.datestring]
-    dayOfWeekName = ["日", "月", "火", "水", "木", "金", "土"]
+    dayOfWeekName = ["月", "火", "水", "木", "金", "土", "日"]
     dayofweeks  = [dayOfWeekName[datetime.strptime(ds, "%Y/%m/%d").weekday()] for ds in df.datestring]
     df["datestring"] = datestrings
     df["timestamp"] = timestamps
@@ -23,13 +23,13 @@ def getPublicHolidayDateData():
 
 def getNormalHolidayDateData(startTimestamp, endTimestamp):
     normalHolidayDateData = []
-    dayOfWeekName = ["日", "月", "火", "水", "木", "金", "土"]
+    dayOfWeekName = ["月", "火", "水", "木", "金", "土", "日"]
     totalDateNum = int((endTimestamp - startTimestamp) / (60*60*24))
     for i in range(totalDateNum):
         targetTimestamp = i * (60*60*24) + startTimestamp
         targetDatetime = datetime.fromtimestamp(targetTimestamp)
         targetDate = targetDatetime.strftime("%Y/%m/%d")
-        if (targetDatetime.weekday() == 0 or targetDatetime.weekday() == 6):
+        if (targetDatetime.weekday() == 5 or targetDatetime.weekday() == 6):
             normalHolidayDateData.append(
                 [targetTimestamp, targetDate, "休日", dayOfWeekName[targetDatetime.weekday()], "normal"])
     df = pd.DataFrame(normalHolidayDateData, columns=['timestamp','datestring','name', 'dayofweek', 'type'])
@@ -73,7 +73,10 @@ def main():
                                                      publicHolidayDateData.timestamp.values[-1])
     totalHolidayDateData  = concatHolidayDateData(publicHolidayDateData, normalHolidayDateData)
     totalHolidayDateData  = tagChainHolidayDateData(totalHolidayDateData)
-    #print(totalHolidayDateData)
+    """
+    for datestring, name, dayofweek in zip(totalHolidayDateData.datestring, totalHolidayDateData.name, totalHolidayDateData.dayofweek):
+        print(datestring, name, dayofweek)
+    """
     dfToSqlite(totalHolidayDateData)
 
 if __name__ == "__main__": main()

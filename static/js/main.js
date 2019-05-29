@@ -1,3 +1,5 @@
+
+/*
 var addZeroPadding = n => {
   return ("0" + n).slice(-2);
 };
@@ -18,7 +20,6 @@ getTodayString();
 
 setInterval("getTodayString", 1000);
 
-/*
 var getHolidayDatelist = () => {
   var req = new XMLHttpRequest();
   req.open("get", "../static/data/syukujitsu_linux.csv", true);

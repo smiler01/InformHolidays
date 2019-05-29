@@ -11,39 +11,68 @@
   <body>
     <header>
       <nav class="header-nav">
-        <a class="header-title" href="index.html">次の連休は？</a>
+        <a class="header-title" href="/">
+          <img class="header-title-icon" src="../static/img/icon.svg" alt=""/>
+          <p class="header-title-text">Next Consecutive Holidays | 次の連休は？</p>
+        </a>
       </nav>
     </header>
+
     <main>
       <div class="today-date">
-        <p class="today-is">Today is</p>
-        <p id="today-date-content" class="today-date-content"></p>
+        <div class="today-date-string">
+          <p>今日は</p>
+          <p>{{ todayDate[1] }}（{{ todayDate[3] }}）</p>
+        </div>
+        <p class="today-date-name">{{ todayDate[2] }}</p>
+        {% if todayDate[4] == "work" %}
+          <img class="today-icon work-icon" src="../static/img/briefcase-solid.svg" />
+        {% else %}
+          <img class="today-icon holiday-icon" src="../static/img/icon.svg" />
+        {% endif %}
       </div>
 
-      <div class="">
-        <p>連続する休日数</p>
-        <!--
-        <div class="">
-          {% for i in range(5) %}
-            <label class="" for={{ i }}>
-              <p class="">{{ i + 1 }}日以上</p>
+      <div class="specify-numchain">
+        <form class="specify-numchain-contents" action="http://127.0.0.1:5000/update" method="post">
+          {% for i in range(1, 5) %}
+            {% if i == numChain-1 %}
+              <input class="specify-numchain-input" id="item_{{i}}" type="radio" name="numChain" value="{{i+1}}" checked/>
+            {% else %}
+              <input class="specify-numchain-input" id="item_{{i}}" type="radio" name="numChain" value="{{i+1}}" />
+            {% endif %}
+            <label class="specify-numchain-label" for="item_{{i}}">
+              <p class="numchain-button">{{ i + 1 }}日以上</p>
             </label>
-            <input class="" type="checkbox" id={{ i }} />
           {% endfor %}
-        </div>
-        -->
+          <input class="specify-numchain-submit" type="submit" value="検索">
+        </form>
       </div>
 
       <div class="consecutive-holidays-block">
-        <p>dskodsk</p>
+        <!--No Holiday date-->
+        {% if chainHolidayList|length == 0 %}
+          <div class="no-consecutive-holidays">
+            <p class="no-consecutive-holidays-contents">
+              {{numChain}}日以上の連休は、現在まだ規定（確定）されていません。
+            </p>
+          </div>
+        {% endif %}
         {% for chainHoliday in chainHolidayList %}
           <div class="consecutive-holidays-content">
-            <input class="first-checkbox-label" type="checkbox" id={{ loop.index }} />
+            {% if loop.index == 1 %}
+              <input class="first-checkbox-label" type="checkbox" id={{ loop.index }} checked />
+            {% else %}
+              <input class="first-checkbox-label" type="checkbox" id={{ loop.index }} />
+            {% endif %}
             <label class="firstday-consecutive-holiday" for={{ loop.index }}>
               <p class="holiday-datestring">{{ chainHoliday[0][1] }}</p>
               <p class="holiday-dayofweek">（{{ chainHoliday[0][3] }}）</p>
               <p class="holiday-name">{{ chainHoliday[0][2] }}</p>
-              <p class="holiday-numchain">連続休暇日数：{{ chainHoliday|length }}</p>
+              <p class="holiday-numnextuntill">{{ numNextHolidaysList[loop.index-1] }}日後</p>
+              <p class="holiday-numchain">連休日数：{{ chainHoliday|length }}</p>
+              <a class="tweet-button" href="https://twitter.com/intent/tweet?text={{"{}({})から{}連休です。".format(chainHoliday[0][1], chainHoliday[0][3], chainHoliday|length)}}&hashtags=連休" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)),'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;">
+                <i class="fab fa-twitter"></i>
+              </a>
             </label>
             <div class="child-consecutive-holidays">
               <!--hidden-area start-->
@@ -67,5 +96,6 @@
       </nav>
     </footer>
     <script src="../static/js/main.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </body>
 </html>
