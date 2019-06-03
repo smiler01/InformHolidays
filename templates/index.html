@@ -70,7 +70,7 @@
               <p class="holiday-name">{{ chainHoliday[0][2] }}</p>
               <p class="holiday-numnextuntill">{{ numNextHolidaysList[loop.index-1] }}日後</p>
               <p class="holiday-numchain">連休日数：{{ chainHoliday|length }}</p>
-              <a class="tweet-button" href="https://twitter.com/intent/tweet?text={{"{}({})から{}連休です。".format(chainHoliday[0][1], chainHoliday[0][3], chainHoliday|length)}}&hashtags=連休" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)),'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;">
+              <a class="tweet-button" href="https://twitter.com/intent/tweet?text={{"{}({})から{}連休です。".format(chainHoliday[0][1], chainHoliday[0][3], chainHoliday|length)}}&url=https://consecutiveholidays.info&hashtags=連休" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)),'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;">
                 <i class="fab fa-twitter"></i>
               </a>
             </label>
@@ -92,7 +92,7 @@
     </main>
     <footer>
       <nav class="footer-nav">
-        <p class="footer-copyright">&copy; 2019 Kanji Yamaguchi</p>
+        <p class="footer-copyright">&copy; 2019 K.Yamaguchi</p>
       </nav>
     </footer>
     <script src="../static/js/main.js"></script>

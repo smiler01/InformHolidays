@@ -13,7 +13,6 @@ class dateBaseProcessing:
         conn = sqlite3.connect(self.dbPath)
         cursor = conn.cursor()
         todayDate = datetime.strptime(datetime.now().strftime("%Y/%m/%d"), "%Y/%m/%d")
-        #todayDate = datetime.strptime(("2019/06/03"), "%Y/%m/%d")
         operation = "SELECT * FROM datebase WHERE timestamp == {};".format(todayDate.timestamp())
         cursor.execute(operation)
         todayDateData = cursor.fetchall()
