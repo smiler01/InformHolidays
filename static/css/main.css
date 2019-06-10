@@ -213,7 +213,7 @@ main {
   background-color: #ddd;
 }
 
-.holiday-caretdown, .holiday-datestring, .holiday-name, .holiday-numnextuntill, .holiday-dayofweek, .holiday-numchain, .tweet-button {
+.holiday-caretdown, .holiday-datestring, .holiday-name, .holiday-numnextuntill, .holiday-dayofweek, .holiday-numchain {
   margin: 0.6rem 0.3rem 0.6rem 0.3rem;
 }
 
@@ -230,25 +230,8 @@ main {
   margin-right: 1.5rem;
 }
 
-.tweet-button {
-  width: 2.2rem;
-  height: 2.2rem;
-  text-decoration: none;
-  background-color: #39A6E7;
-  color: #fff;
-  line-height: 2.2rem;
-  text-align: center;
-  border-radius: 50%;
-  margin-top: auto;
-  transition: transform 0.5s;
-}
-
 .fa-twitter {
   font-size: 1.4rem;
-}
-
-.tweet-button:hover {
-  transform: scale(1.2);
 }
 
 .first-checkbox-label {
@@ -366,7 +349,7 @@ footer {
     font-size: 1.4rem;
   }
 
-  .holiday-datestring, .holiday-dayofweek, .holiday-name, .holiday-numnextuntill, .holiday-numchain, .tweet-button {
+  .holiday-datestring, .holiday-dayofweek, .holiday-name, .holiday-numnextuntill, .holiday-numchain {
     font-size: 1.4rem;
   }
 
@@ -446,15 +429,8 @@ footer {
     padding: 0.35rem 2.0rem 0.35rem 2.0rem;
   }
 
-  .holiday-datestring, .holiday-dayofweek, .holiday-name, .holiday-numnextuntill, .holiday-numchain, .tweet-button {
+  .holiday-datestring, .holiday-dayofweek, .holiday-name, .holiday-numnextuntill, .holiday-numchain {
     font-size: 1.0rem;
-  }
-
-  .tweet-button {
-    width: 1.8rem;
-    height: 1.8rem;
-    line-height: 2.2rem;
-    margin-top: 0.2rem;
   }
 
   .fa-twitter {
