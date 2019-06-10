@@ -70,9 +70,6 @@
               <p class="holiday-name">{{ chainHoliday[0][2] }}</p>
               <p class="holiday-numnextuntill">{{ numNextHolidaysList[loop.index-1] }}日後</p>
               <p class="holiday-numchain">連休日数：{{ chainHoliday|length }}</p>
-              <a class="tweet-button" href="https://twitter.com/intent/tweet?text={{"{}({})から{}連休です。".format(chainHoliday[0][1], chainHoliday[0][3], chainHoliday|length)}}&url=https://consecutiveholidays.info&hashtags=連休" rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)),'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1'); return false;">
-                <i class="fab fa-twitter"></i>
-              </a>
             </label>
             <div class="child-consecutive-holidays">
               <!--hidden-area start-->
@@ -92,10 +89,9 @@
     </main>
     <footer>
       <nav class="footer-nav">
-        <p class="footer-copyright">&copy; 2019 K.Yamaguchi</p>
+        <p class="footer-copyright">&copy; 2019 Yamacan</p>
       </nav>
     </footer>
-    <script src="../static/js/main.js"></script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </body>
 </html>
