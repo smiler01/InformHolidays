@@ -3,7 +3,6 @@ import os
 import datetime
 import sqlite3
 from flask import Flask, render_template, request, redirect
-#
 from dateBase import dateBaseProcessing as dbp
 
 app = Flask(__name__)
