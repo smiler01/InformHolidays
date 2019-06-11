@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>次の連休はいつ？</title>
+    <title>次の休みは何連休でいつ？ | １秒で分かる</title>
+    <meta content="休みが待ち遠しいあなたに、次の休みが何日後で、何連休なのか1秒でお伝えします！！" name="description">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="shortcut icon" href="../static/img/favicon.ico">
@@ -12,7 +13,7 @@
     <header>
       <nav class="header-nav">
         <a class="header-title" href="/">
-          <img class="header-title-icon" src="../static/img/icon.svg" alt=""/>
+          <img class="header-title-icon" src="../static/img/icon.svg" alt="当サイトのアイコン" />
           <p class="header-title-text">Next Consecutive Holidays | 次の連休は？</p>
         </a>
       </nav>
@@ -26,14 +27,14 @@
         </div>
         <p class="today-date-name">{{ todayDate[2] }}</p>
         {% if todayDate[4] == "work" %}
-          <img class="today-icon work-icon" src="../static/img/briefcase-solid.svg" />
+          <img class="today-icon work-icon" src="../static/img/briefcase-solid.svg" alt="平日を示すカバンのアイコン画像" />
         {% else %}
-          <img class="today-icon holiday-icon" src="../static/img/icon.svg" />
+          <img class="today-icon holiday-icon" src="../static/img/icon.svg" alt="連休を示すカバンのアイコン"/>
         {% endif %}
       </div>
 
       <div class="specify-numchain">
-        <form class="specify-numchain-contents" action="http://127.0.0.1:5000/update" method="post">
+        <form class="specify-numchain-contents" action="./update" method="post">
           {% for i in range(1, 5) %}
             {% if i == numChain-1 %}
               <input class="specify-numchain-input" id="item_{{i}}" type="radio" name="numChain" value="{{i+1}}" checked/>
@@ -69,7 +70,9 @@
               <p class="holiday-dayofweek">（{{ chainHoliday[0][3] }}）</p>
               <p class="holiday-name">{{ chainHoliday[0][2] }}</p>
               <p class="holiday-numnextuntill">{{ numNextHolidaysList[loop.index-1] }}日後</p>
-              <p class="holiday-numchain">連休日数：{{ chainHoliday|length }}</p>
+              <p class="holiday-numchain">
+                <span class="holiday-numchain-counts">{{ chainHoliday|length }}</span>連休
+              </p>
             </label>
             <div class="child-consecutive-holidays">
               <!--hidden-area start-->
